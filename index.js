@@ -82,7 +82,14 @@ app.use(bodyParser.raw({ type: '*/*' }))
 
 
 function addFinal(inp) {
-    app.get('/' + inp.path, (req, res) => res.send("The secret word is: " + randomWord()))
+    let f;
+    switch (inp.verb) {
+        case 'GET': f = app.get.bind(app); method="GET"; break;
+        case 'POST': f = app.post.bind(app); method="POST"; break;
+        case 'PUT': f = app.put.bind(app); method="PUT"; break;
+        default: throw new Error("WHAT");
+    }
+    f('/' + inp.path, (req, res) => res.send("The super secret word is: " + randomWord()))
 }
 
 function stringOfDesc(desc) {
