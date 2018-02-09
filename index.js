@@ -89,7 +89,7 @@ function addFinal(inp) {
         case 'PUT': f = app.put.bind(app); method="PUT"; break;
         default: throw new Error("WHAT");
     }
-    f('/' + inp.path, (req, res) => res.send("The super secret word is: " + randomWord()))
+    f('/' + inp.path, (req, res) => res.send("Here is the treasure: goo.gl/SsAhv"))
 }
 
 function stringOfDesc(desc) {
